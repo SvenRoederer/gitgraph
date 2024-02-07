@@ -40,7 +40,7 @@ SVG=1
 HIGH=
 ARGS=""
 QUIET=0
-VISOR=$(git config --get graph.viewer)
+#VISOR=$(git config --get graph.viewer)
 # }}}
 
 # functions {{{
@@ -330,7 +330,9 @@ function main()
          then
             VISOR=dia
          fi
-         create_dot_graph | dot -Tsvg | $VISOR -
+#        echo  create_dot_graph | dot -Tsvg | $VISOR -
+#         create_dot_graph | dot -Tsvg | $VISOR -
+         create_dot_graph | dot -Tsvg >/tmp/graph.svg
       fi
    else
 
@@ -340,7 +342,8 @@ function main()
          then
             VISOR=eog
          fi
-         create_dot_graph | dot -Tpng | $VISOR -
+#         create_dot_graph | dot -Tpng | $VISOR -
+         create_dot_graph | dot -Tpdf >/tmp/graph.pdf
       fi
    fi
 }
